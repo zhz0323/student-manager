@@ -37,7 +37,7 @@
                             </div>
                             <div class="form-group">
                               <div class="col-sm-offset-2 col-sm-4">
-                                    <button type="submit" class="btn btn-danger btn-block">注册</button>
+                                    <button type="submit" class="btn btn-danger btn-block register">注册</button>
 
                                 <!-- <a class="btn btn-danger btn-block">注册</a> -->
                               </div>
@@ -52,3 +52,13 @@
 </html>
     <script src="/bootstrap/js/jquery-1.12.4.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 导入加密的js -->
+    <script src="/md5/md5.min.js"></script>
+    <script>
+        $('.register').click(function(e){
+            //获取用户注册输入的密码
+            let value=$('#userpass').val()
+            //重新加密再赋值  md5('输入的密码',随意写什么)
+            $('#userpass').val(md5(value,'hello'))
+        })
+    </script>

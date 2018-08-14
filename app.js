@@ -4,8 +4,10 @@ const bodyParser = require('body-parser')
 // 导入 express-session中间件(包)
 const session = require('express-session')
 
-//引入自己写的路由
+//引入自己写的路由,管理员相关
 const manageRouter=require('./route/managerRouter')
+//引入自己写的路由,学员相关
+const studentRouter=require('./route/studentRouter')
 let app=express()
 
 //托管静态资源
@@ -24,9 +26,10 @@ app.use(session({
 //   cookie: { secure: true }
 }))
 
-//挂载路由中间件
+//使用自己写的路由容器,管理员相关
 app.use('/manager',manageRouter)
-
+//使用自己写的路由,学员相关
+app.use('/student',studentRouter)
 
 app.listen(8080,'127.0.0.1',()=>{
     

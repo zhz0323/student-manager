@@ -87,29 +87,29 @@
             </ol>
           </div>
           <div class="panel-body">
-            <form class="form-horizontal">
+            <form class="form-horizontal" method="post" action="/student/insert">
               <div class="form-group">
                 <label for="userName" class="col-sm-2 control-label">姓名</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="userName" placeholder="请输入姓名">
+                  <input type="text" class="form-control" name="userName" id="userName" placeholder="请输入姓名">
                 </div>
               </div>
               <div class="form-group">
                 <label for="userAge" class="col-sm-2 control-label">年龄</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="userAge" placeholder="请输入年龄">
+                  <input type="text" class="form-control" name="userAge" id="userAge" placeholder="请输入年龄">
                 </div>
               </div>
               <div class="form-group">
                 <label for="userMale" class="col-sm-2 control-label">性别</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="userMale" placeholder="请输入性别">
+                  <input type="text" class="form-control" name="userMale" id="userMale" placeholder="请输入性别">
                 </div>
               </div>
               <div class="form-group">
                 <label for="userMobile" class="col-sm-2 control-label">电话</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="userMobile" placeholder="请输入电话">
+                  <input type="text" class="form-control" name="userMobile" id="userMobile" placeholder="请输入电话">
                 </div>
               </div>
               <div class="form-group">
@@ -121,7 +121,7 @@
               <div class="form-group">
                 <label for="userDesc" class="col-sm-2 control-label">简介</label>
                 <div class="col-sm-8">
-                  <textarea type="text" rows="10" style="resize: none" class="form-control" id="userDesc" placeholder="请输入简介"></textarea>
+                  <textarea type="text" rows="10" style="resize: none" class="form-control" name="userDesc" id="userDesc" placeholder="请输入简介"></textarea>
                 </div>
               </div>
               <div class="form-group">

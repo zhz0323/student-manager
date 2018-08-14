@@ -26,6 +26,9 @@ router.post('/login',(req,res)=>{
             if(result.length==0){
                 doHelper.tips(res,'用户名或密码错误','/manager/login')
             }else{
+                //登陆成功之后把用户名和密码保存到session中
+                req.session.username=username
+                req.session.userpass=userpass
                 res.redirect('/student/index');
             }
         })

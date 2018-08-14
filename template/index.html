@@ -51,8 +51,8 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <p class="navbar-text navbar-right " style="font-weight: 700">欢迎 【sky】登录
-                <a href="#" class="logout">退出</a>
+              <p class="navbar-text navbar-right " style="font-weight: 700">欢迎 【{{username}}】登录
+                <a href="/student/logout" class="logout">退出</a>
               </p>
             </div>
             <!-- /.navbar-collapse -->
@@ -96,7 +96,7 @@
                 </div>
               </div>
               <button type="submit" class="btn btn-success">查找</button>
-              <a href="#" class="btn btn-warning">新增</a>
+              <a href="/student/insert" class="btn btn-warning">新增</a>
             </form>
           </div>
           <div class="panel-body">
@@ -111,18 +111,19 @@
                 </tr>
               </thead>
               <tbody>
+                {{each result value}}
                 <tr>
-                  <th scope="row">产品经理不好当1</th>
-                  <td>1</td>
-                  <td>男</td>
-                  <td>188</td>
+                  <th scope="row">{{value.userName}}</th>
+                  <td>{{value.userAge}}</td>
+                  <td>{{value.userMale}}</td>
+                  <td>{{value.userMobile}}</td>
                   <td>
                     <button class='btn btn-success'>编辑🍞</button>
                     
                     <button class='btn btn-danger'>删除👍</button>
                   </td>
                 </tr>
-
+                {{/each}}
               </tbody>
             </table>
           </div>
