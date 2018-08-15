@@ -73,6 +73,8 @@
       $('.vCode').click(function(){
         $(this).attr('src','/manager/vcode?'+Math.random()*10)
       })
+      //打开页面自动刷新验证码
+      $('.vCode').click()
       //给登陆按钮注册点击事件,对用户输入的密码进行加密
       $('.login').click(function(){
         //获取用户输入的密码

@@ -1,6 +1,7 @@
 //引入mongodb包,并使用他的一个属性
 const MongoClient = require('mongodb').MongoClient;
-
+//引入数据库的id
+const ObjectID = require('mongodb').ObjectID;
 const url = 'mongodb://127.0.0.1:27017';
 
 //数据库名
@@ -41,5 +42,35 @@ module.exports = {
     //提示状态和跳转页面的方法
     tips(res,message,url){
         res.send(`<script> alert('${message}'); window.location='${url}'; </script>`);
-    }
+    },
+    //修改数据库的方法
+    updateOne(collectionName, obj,upobj, callback){
+        MongoClient.connect(url, function (err, client) {
+            // 选择使用库
+            const db = client.db(dbName);
+            // 查找数据
+            db.collection(collectionName).updateOne(obj,upobj,(err,result)=>{
+                if(err) throw err;
+                // 关闭数据库
+                client.close();
+                callback(result.result);
+            })
+        });
+    },
+    //删除数据的方法
+    deleteOne(collectionName, obj, callback){
+        MongoClient.connect(url, function (err, client) {
+            // 选择使用库
+            const db = client.db(dbName);
+            // 查找数据
+            db.collection(collectionName).deleteOne(obj,(err,result)=>{
+                if(err) throw err;
+                // 关闭数据库
+                client.close();
+                callback(result.result);
+            })
+        });
+    },
+    ObjectID
+
 }

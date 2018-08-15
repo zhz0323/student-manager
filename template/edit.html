@@ -51,8 +51,8 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <p class="navbar-text navbar-right " style="font-weight: 700">欢迎 【{{username}}】登录
-                <a href="/student/logout" class="logout">退出</a>
+              <p class="navbar-text navbar-right " style="font-weight: 700">欢迎 【sky】登录
+                <a href="#" class="logout">退出</a>
               </p>
             </div>
             <!-- /.navbar-collapse -->
@@ -86,48 +86,56 @@
               <li class="active">学生列表</li>
             </ol>
           </div>
-          <div class="panel-heading">
-            <form class="form-inline">
+          <div class="panel-body">
+            <form class="form-horizontal" method="post" action="/student/edit">
+              <!-- 隐藏一个input存储id -->
+              <input type="hidden" name="_id" value="{{result._id}}">
               <div class="form-group">
-                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-                <div class="input-group">
-                  <div class="input-group-addon">学生姓名</div>
-                  <input type="text" class="form-control" name="search" placeholder="请输入学生姓名进行查询">
+                <label for="userName" class="col-sm-2 control-label">姓名</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" value="{{result.userName}}" name="userName" id="userName" placeholder="请输入姓名">
                 </div>
               </div>
-              <button type="submit" class="btn btn-success">查找</button>
-              <a href="/student/insert" class="btn btn-warning">新增</a>
+              <div class="form-group">
+                <label for="userAge" class="col-sm-2 control-label">年龄</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="userAge" value="{{result.userAge}}" id="userAge" placeholder="请输入年龄">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="userMale" class="col-sm-2 control-label">性别</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="userMale" value="{{result.userMale}}" id="userMale" placeholder="请输入性别">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="userMobile" class="col-sm-2 control-label">电话</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="userMobile" value="{{result.userMobile}}" id="userMobile" placeholder="请输入电话">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="userAddress" class="col-sm-2 control-label">地址</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" value="{{result.userAddress}}" name="userAddress" id="userAddress" placeholder="请输入地址">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="userDesc" class="col-sm-2 control-label">简介</label>
+                <div class="col-sm-8">
+                  <textarea type="text" rows="10" style="resize: none" class="form-control" name="userDesc" id="userDesc" placeholder="请输入简介">{{result.userDesc}}</textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-default">保存</button>
+                  <a href="/student/index" class="btn btn-default">取消</a>
+                </div>
+              </div>
             </form>
           </div>
-          <div class="panel-body">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>姓名</th>
-                  <th>年龄</th>
-                  <th>性别</th>
-                  <th>手机号码</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody>
-                {{each result value}}
-                <tr>
-                  <th scope="row">{{value.userName}}</th>
-                  <td>{{value.userAge}}</td>
-                  <td>{{value.userMale}}</td>
-                  <td>{{value.userMobile}}</td>
-                  <td>
-                    <button class='btn btn-success' onclick="edit({{value._id}})">编辑🍞</button>
-                    
-                    <button class='btn btn-danger' onclick="del({{value._id}})">删除👍</button>
-                  </td>
-                </tr>
-                {{/each}}
-              </tbody>
-            </table>
-          </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -139,15 +147,3 @@
 <script src="/bootstrap/js/jquery-1.12.4.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/bootstrap/js/bootstrap.min.js"></script>
-<script>
-  //点击删除把id带到删除路由
-  function del(id){
-    if(confirm('真的要删除吗')){
-      window.location='/student/delete/'+id
-    }
-  }
-  //点击编辑把当前数据的id带过去
-  function edit(id){
-    window.location='/student/edit/'+id
-  }
-</script>
